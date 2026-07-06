@@ -292,14 +292,16 @@
   layout();
 
   // ---- click-to-enter: the vortex graphic expands over the mosaic, then the core blacks it out ----
-  const SUCK_DUR=2.0, SUCK_NAV=1.4;   // load new page before animation completes (no black hang)
+  const SUCK_DUR=2.1, SUCK_NAV=1.5;   // allow vortex to play; load page early, navigate before black hang
   let sucking=false, suckStart=0, suckT=0;
   const linkEl=document.getElementById('screenlink');
   if(linkEl){
     linkEl.addEventListener('click',e=>{
       if(reduceMotion) return;                       // reduced motion: let the link navigate normally
       e.preventDefault(); e.stopPropagation();
+      if(sucking) return;                            // ignore rapid double-clicks
       sucking=true; suckStart=performance.now();
+      suckT=0;
       document.body.classList.add('entering');
       const target=linkEl.href;
 
@@ -308,26 +310,29 @@
       preload.src=target;
       preload.style.cssText='position:fixed;top:-999px;left:-999px;width:1px;height:1px;border:none;opacity:0;pointer-events:none;';
       preload.onload=()=>{
-        // Page is ready: switch to it instantly—no extra wait.
-        if(sucking) window.location.replace(target);
+        // Give vortex a short head start, then switch while animation is near-complete.
+        if(sucking){
+          setTimeout(()=>{
+            if(sucking) window.location.replace(target);
+          },200);
+        }
       };
       document.body.appendChild(preload);
 
-      // Fallback: if iframe never fires onload (e.g., navigation issues),
-      // fall back to normal navigation after SUCK_NAV.
+      // Fallback: if iframe never fires onload, ensure we still navigate.
       const fallback=setTimeout(()=>{
         window.location.href=target;
       },SUCK_NAV*1000);
 
-      const io=new IntersectionObserver((es)=>{
-        io.disconnect();
-        if(!es[0].isIntersecting){
+      // Watch for tab-switch / page-hide so we can clean up; don't cancel while user is on the page.
+      const onVisibility=()=>{
+        if(document.hidden){
           sucking=false;
           document.body.classList.remove('entering');
           clearTimeout(fallback);
         }
-      },{rootMargin:'100px'});
-      io.observe(linkEl);
+      };
+      document.addEventListener('visibilitychange', onVisibility);
     });
   }
 
