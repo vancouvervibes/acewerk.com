@@ -292,27 +292,44 @@
   layout();
 
   // ---- click-to-enter: the vortex graphic expands over the mosaic, then the core blacks it out ----
-  const SUCK_DUR=2.0, SUCK_NAV=1.75;   // s; tighter timing, avoid black-screen hang
+  const SUCK_DUR=2.0, SUCK_NAV=1.4;   // load new page before animation completes (no black hang)
   let sucking=false, suckStart=0, suckT=0;
   const linkEl=document.getElementById('screenlink');
   if(linkEl){
     linkEl.addEventListener('click',e=>{
       if(reduceMotion) return;                       // reduced motion: let the link navigate normally
-      e.preventDefault();
-      if(sucking) return;
+      e.preventDefault(); e.stopPropagation();
       sucking=true; suckStart=performance.now();
       document.body.classList.add('entering');
-      setTimeout(()=>{window.location.href=linkEl.href;},SUCK_NAV*1000);
+      const target=linkEl.href;
+
+      // Start loading the next page immediately so there is no black delay after animation.
+      const preload=document.createElement('iframe');
+      preload.src=target;
+      preload.style.cssText='position:fixed;top:-999px;left:-999px;width:1px;height:1px;border:none;opacity:0;pointer-events:none;';
+      preload.onload=()=>{
+        // Page is ready: switch to it instantly—no extra wait.
+        if(sucking) window.location.replace(target);
+      };
+      document.body.appendChild(preload);
+
+      // Fallback: if iframe never fires onload (e.g., navigation issues),
+      // fall back to normal navigation after SUCK_NAV.
+      const fallback=setTimeout(()=>{
+        window.location.href=target;
+      },SUCK_NAV*1000);
+
+      const io=new IntersectionObserver((es)=>{
+        io.disconnect();
+        if(!es[0].isIntersecting){
+          sucking=false;
+          document.body.classList.remove('entering');
+          clearTimeout(fallback);
+        }
+      },{rootMargin:'100px'});
+      io.observe(linkEl);
     });
   }
-  // if the visitor comes back via bfcache, restore the mosaic
-  window.addEventListener('pageshow',e=>{
-    if(e.persisted){
-      sucking=false; suckT=0;
-      document.body.classList.remove('entering');
-      colArr.set(baseCol);
-      gl.bindBuffer(gl.ARRAY_BUFFER,cb); gl.bufferSubData(gl.ARRAY_BUFFER,0,colArr);
-    }
   });
 
   const STIFF=0.16,DAMP=0.80;
