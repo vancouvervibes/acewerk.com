@@ -30,7 +30,7 @@
   .fallback{position:fixed;inset:0;display:none;place-items:center;z-index:9;padding:24px;text-align:center;color:var(--ink);font-size:15px;line-height:1.6;}
   @media (prefers-reduced-motion: reduce){ .hint{display:none} }
   /* click-to-enter: overlays melt away while the mosaic gets pulled into the hole */
-  body.entering .mark,body.entering .foot,body.entering .scrim{transition:opacity .8s ease .3s;opacity:0}
+  body.entering .mark,body.entering .foot,body.entering .scrim{transition:opacity .5s ease 0s;opacity:0}
   body.entering #screenlink{pointer-events:none;cursor:default}
 </style>
 </head>
@@ -292,7 +292,7 @@
   layout();
 
   // ---- click-to-enter: the vortex graphic expands over the mosaic, then the core blacks it out ----
-  const SUCK_DUR=3.0, SUCK_NAV=2.85;   // s; navigate just as the black core finishes covering everything
+  const SUCK_DUR=2.0, SUCK_NAV=1.75;   // s; tighter timing, avoid black-screen hang
   let sucking=false, suckStart=0, suckT=0;
   const linkEl=document.getElementById('screenlink');
   if(linkEl){
