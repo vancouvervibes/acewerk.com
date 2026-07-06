@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Our Team — Ace Werk</title>
-  <meta name="description" content="Ace Werk is a founder-led studio — senior product, engineering, and marketing leaders who took a crypto payments platform from legacy brand to nine-figure transaction volume.">
+  <title>Services — Ace Werk</title>
+  <meta name="description" content="Ace Werk is a founder-led digital studio: web design, development, creative tech and growth for complex products.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Rajdhani:wght@400;500&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -231,33 +231,6 @@
       line-height: 1.7; max-width: 680px;
     }
 
-    /* ── Team: ledger rows ── */
-    .team-row {
-      display: grid;
-      grid-template-columns: minmax(210px, 300px) 1fr;
-      gap: 8px 36px;
-      padding: 22px 0;
-      border-top: 1px solid var(--rule-soft);
-    }
-    .team-row:first-of-type { border-top: 0; padding-top: 0; }
-    .team-row:last-of-type { padding-bottom: 0; }
-    .team-name {
-      font-family: 'Rajdhani', sans-serif;
-      font-weight: 500; font-size: var(--fs-item-title);
-      color: #ffffff;
-      display: flex; flex-direction: column; gap: 4px;
-    }
-    .team-role {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 300; font-size: var(--fs-label);
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--accent);
-    }
-    .team-desc {
-      font-size: var(--fs-body); color: var(--ink-muted);
-      line-height: 1.7; max-width: 680px;
-    }
-
     /* ── Why / Process / Domains: open text columns ── */
     .col-grid {
       display: grid;
@@ -398,7 +371,7 @@
       .nav-links { gap: 14px; }
       .nav-links a { font-size: 11px; }
       .page-wrapper { padding-top: 44px; }
-      .svc-row, .exp-row, .team-row { grid-template-columns: 1fr; }
+      .svc-row, .exp-row { grid-template-columns: 1fr; }
     }
 
     /* ── Reduced Motion ── */
@@ -420,11 +393,11 @@
   <!-- ══════ NAVIGATION ══════ -->
   <header class="nav-bar" role="banner">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="Ace Werk home">Ace Werk</a>
+      <a href="/" class="nav-logo" aria-label="Ace Werk home">Ace Werk</a>
       <nav class="nav-links" role="navigation" aria-label="Main navigation">
-        <a href="services.html">Services</a>
-        <a href="our-team.html" class="active" aria-current="page">Our Team</a>
-        <a href="contact.html">Contact</a>
+        <a href="/services" class="active" aria-current="page">Services</a>
+        <a href="/our-team">Our Team</a>
+        <a href="/contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -434,8 +407,8 @@
     <main>
       <!-- ══════ HERO ══════ -->
       <section class="hero-block" aria-labelledby="hero-title">
-        <div class="hero-label">Our team</div>
-        <h1 id="hero-title" class="hero-title">Built by operators,<br>not spectators</h1>
+        <div class="hero-label">Founder-led digital studio</div>
+        <h1 id="hero-title" class="hero-title">Built for<br>complex products</h1>
       </section>
 
       <!-- ══════ ONE CONTENT SHELL ══════ -->
@@ -444,101 +417,185 @@
 
           <!-- Intro -->
           <section class="topic" aria-label="Introduction">
-            <p class="lead">Ace Werk is a founder-led studio.</p>
+            <p class="lead">AceWerk is a founder-led digital studio.</p>
             <p class="intro-copy">
-              We are the product, engineering, and marketing leaders who took a crypto payments
-              platform from legacy brand to nine-figure transaction volume — and now we bring that
-              same standard of execution to other companies.
+              We are the product, engineering, and growth leaders who took a crypto payments
+              platform from legacy brand to nine-figure transaction volume &mdash; and now we
+              bring that same standard to other companies.
+            </p>
+            <p class="intro-copy">
+              We design and build web experiences, creative tech, and growth systems for
+              product-led teams in fintech, crypto, and high-complexity environments.
             </p>
           </section>
 
-          <!-- Leadership -->
-          <section class="topic" aria-labelledby="leadership-title">
-            <div class="section-label">Who we are</div>
-            <h2 id="leadership-title" class="section-title">Leadership</h2>
-
-            <div class="team-row">
-              <h3 class="team-name">
-                Illya Swan
-                <span class="team-role">Product &amp; Design</span>
-              </h3>
-              <p class="team-desc">
-                Led product strategy and platform modernization at CoinPayments, guiding the
-                transformation of a legacy crypto payments platform into a clean, scalable product
-                handling nine-figure transaction volume. Previously held product and design roles at
-                PNI Digital Media and IUGO Mobile Entertainment, where The Walking Dead: Road to
-                Survival surpassed 100 million downloads.
+          <!-- Services -->
+          <section class="topic" aria-labelledby="services-title">
+            <div class="section-label">What we do</div>
+            <h2 id="services-title" class="section-title">Services</h2>
+            <div class="svc-row">
+              <h3 class="svc-name"><span class="svc-glyph" aria-hidden="true">&#9830;</span>Web Design</h3>
+              <p class="svc-desc">
+                We study your market, read actual user complaints, and design pages that answer
+                objections before they are asked. For complex products and financial flows, we
+                apply experience, not guesses.
               </p>
             </div>
-
-            <div class="team-row">
-              <h3 class="team-name">
-                Albert Meyburgh
-                <span class="team-role">Engineering</span>
-              </h3>
-              <p class="team-desc">
-                Senior engineer with a rare combined background in security and finance. Built
-                financial platforms from scratch in highly sensitive environments, processing
-                transaction volumes nearing ten figures with a clean security track record.
-                Previously contributed to platform architecture at Helm Operations.
+            <div class="svc-row">
+              <h3 class="svc-name"><span class="svc-glyph" aria-hidden="true">&lt;/&gt;</span>Web Development</h3>
+              <p class="svc-desc">
+                Senior engineers with a combined background in security, finance, and high-scale
+                platforms. We build fast, maintainable systems &mdash; React, Next.js, WebGL &mdash;
+                and treat performance as non-negotiable.
               </p>
             </div>
-
-            <div class="team-row">
-              <h3 class="team-name">
-                Liza Piatko
-                <span class="team-role">Marketing &amp; Growth</span>
-              </h3>
-              <p class="team-desc">
-                Owns full-funnel brand and community strategy. Grew a major payments brand's audience
-                to 13.5K organically engaged followers with zero paid spend, and built a conference
-                presence generating 600+ qualified leads per event. Specialises in rebrands, organic
-                social growth, and content strategy for crypto-native and B2B brands.
+            <div class="svc-row">
+              <h3 class="svc-name"><span class="svc-glyph" aria-hidden="true">&#9674;</span>Creative Tech</h3>
+              <p class="svc-desc">
+                WebGL, motion, interactive storytelling. We make technology feel enjoyable.
+                acewerk.com is not a demo &mdash; it is the proof.
+              </p>
+            </div>
+            <div class="svc-row">
+              <h3 class="svc-name"><span class="svc-glyph" aria-hidden="true">&#9652;</span>Marketing &amp; Growth</h3>
+              <p class="svc-desc">
+                Full-funnel ownership: brand positioning, rebrands, content strategy, organic
+                community growth, conference lead generation. We move beyond awareness into
+                measurable demand, not empty impressions.
               </p>
             </div>
           </section>
 
-          <!-- Why Ace Werk -->
+          <!-- Why AceWerk -->
           <section class="topic" aria-labelledby="why-title">
-            <div class="section-label">Our approach</div>
-            <h2 id="why-title" class="section-title">Why Ace Werk</h2>
+            <div class="section-label">Why us</div>
+            <h2 id="why-title" class="section-title">Why AceWerk</h2>
             <div class="col-grid">
               <div class="col-item">
                 <p class="col-tag">01</p>
-                <h3 class="col-title">Looks great, converts better</h3>
-                <p class="col-desc">
-                  We build things that look great and convert. Every design decision starts with the
-                  customer's objection and answers it before they ask.
-                </p>
+                <h3 class="col-title">Look great &amp; convert</h3>
+                <p class="col-desc">We build things that look great and convert &mdash; not separate goals.</p>
               </div>
               <div class="col-item">
                 <p class="col-tag">02</p>
                 <h3 class="col-title">Craft over templates</h3>
-                <p class="col-desc">
-                  We care about craft, not templates. Every detail — from typography to interaction
-                  timing to the feel of a button click — is intentionally made.
-                </p>
+                <p class="col-desc">We prioritize craft over templates; every build is custom.</p>
               </div>
               <div class="col-item">
                 <p class="col-tag">03</p>
-                <h3 class="col-title">Design and tech, one unit</h3>
-                <p class="col-desc">
-                  We blend design and tech as one discipline. No handoff friction, no waterfall
-                  document dumps — just a single team building together from day one.
-                </p>
+                <h3 class="col-title">One unit</h3>
+                <p class="col-desc">Design and engineering operate as one unit &mdash; no handoff friction, no diluted work.</p>
               </div>
+            </div>
+          </section>
+
+          <!-- Process -->
+          <section class="topic" aria-labelledby="process-title">
+            <div class="section-label">Process</div>
+            <h2 id="process-title" class="section-title">How We Work</h2>
+            <div class="col-grid">
+              <div class="col-item">
+                <p class="col-tag">01</p>
+                <h3 class="col-title">Brief</h3>
+                <p class="col-desc">We clarify your goals, audience, and constraints in a single focused session.</p>
+              </div>
+              <div class="col-item">
+                <p class="col-tag">02</p>
+                <h3 class="col-title">Strategy</h3>
+                <p class="col-desc">We map the information architecture, messaging, and experience flow.</p>
+              </div>
+              <div class="col-item">
+                <p class="col-tag">03</p>
+                <h3 class="col-title">Build</h3>
+                <p class="col-desc">We design and develop in parallel, iterating on real feedback.</p>
+              </div>
+              <div class="col-item">
+                <p class="col-tag">04</p>
+                <h3 class="col-title">Launch</h3>
+                <p class="col-desc">We ship a production-grade solution &mdash; performant, accessible, maintainable.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- By the Numbers -->
+          <section class="topic" aria-labelledby="numbers-title">
+            <div class="section-label">Track record</div>
+            <h2 id="numbers-title" class="section-title">By the Numbers</h2>
+            <div class="stat-row">
+              <div>
+                <p class="stat-value">50+</p>
+                <p class="stat-label">Production Deployments</p>
+              </div>
+              <div>
+                <p class="stat-value">&lt;48h</p>
+                <p class="stat-label">Average Onboarding</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Domains -->
+          <section class="topic" aria-labelledby="domains-title">
+            <div class="section-label">Where we operate</div>
+            <h2 id="domains-title" class="section-title">Domains</h2>
+            <div class="col-grid">
+              <div class="col-item">
+                <p class="col-tag">FIN</p>
+                <h3 class="col-title">Finance</h3>
+                <p class="col-desc">Payment systems, banking platforms, fintech products, wallet and trading interfaces.</p>
+              </div>
+              <div class="col-item">
+                <p class="col-tag">CMP</p>
+                <h3 class="col-title">Compliance</h3>
+                <p class="col-desc">Regulatory tools, documentation systems, governance workflows.</p>
+              </div>
+              <div class="col-item">
+                <p class="col-tag">GME</p>
+                <h3 class="col-title">Games</h3>
+                <p class="col-desc">Game web platforms, marketing pages, Web3 integrations.</p>
+              </div>
+              <div class="col-item">
+                <p class="col-tag">SEC</p>
+                <h3 class="col-title">Security</h3>
+                <p class="col-desc">Security-focused interfaces, identity flows, secure product experiences.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Selected Experience -->
+          <section class="topic" aria-labelledby="exp-title">
+            <div class="section-label">Trust</div>
+            <h2 id="exp-title" class="section-title">Selected Experience</h2>
+            <p class="exp-intro">
+              We have helped build and scale platforms trusted by millions of users and millions
+              in transactions.
+            </p>
+            <div class="exp-row">
+              <h3 class="exp-name">CoinPayments</h3>
+              <p class="exp-desc">Platform modernization supporting nine-figure transaction volume.</p>
+            </div>
+            <div class="exp-row">
+              <h3 class="exp-name">IUGO Mobile Entertainment</h3>
+              <p class="exp-desc">The Walking Dead: Road to Survival &mdash; 100M+ downloads, $100M+ lifetime revenue.</p>
+            </div>
+            <div class="exp-row">
+              <h3 class="exp-name">PNI Digital Media (Staples)</h3>
+              <p class="exp-desc">AI/ML R&amp;D, QA, design systems.</p>
+            </div>
+            <div class="exp-row">
+              <h3 class="exp-name">Helm Operations</h3>
+              <p class="exp-desc">Product and growth execution.</p>
             </div>
           </section>
 
           <!-- CTA -->
           <section class="topic cta-block" aria-labelledby="cta-title">
             <h2 id="cta-title" class="cta-title">
-              Ready to work with us?
+              If you are building something that deserves senior-level execution, let&rsquo;s talk.
             </h2>
             <p class="cta-text">
               Tell us about your project. We reply within one business day.
             </p>
-            <a href="mailto:info@acewerk.com" class="btn-primary">Get in touch</a>
+            <a href="/contact" class="btn-primary">Get in touch</a>
           </section>
 
         </div>

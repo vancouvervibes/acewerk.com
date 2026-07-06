@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ace Werk</title>
+<style>
+  body {
+    margin: 0; height: 100vh;
+    background: #030514;
+    color: #e5e7f0;
+    font-family: system-ui, sans-serif;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 16px;
+    text-align: center;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+  a { color: #e9a83c; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+  <p>Redirecting…</p>
+  <p><a href="/">Back to Ace Werk</a></p>
+
+<script>
+(function(){
+  var href = (location.protocol + "//" + location.host + location.pathname);
+  var search = location.search;
+
+  // /index.html -> /
+  if (href.endsWith("/index.html")) {
+    location.replace("/");
+    return;
+  }
+
+  // Remove trailing .html if present, then redirect
+  var target = href.replace(/\.html$/, "");
+  if (target !== href) {
+    location.replace(target + (search || ""));
+    return;
+  }
+})();
+</script>
+</body>
+</html>
