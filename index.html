@@ -292,7 +292,9 @@
   layout();
 
   // ---- click-to-enter: the vortex graphic expands over the mosaic, then the core blacks it out ----
-  const ANIM_MS=1750, FALLBACK_MS=2400;   // fixed animation time; safety cap
+  const SUCK_DUR=1.75;                    // seconds: how long the vortex runs
+  const ANIM_MS=SUCK_DUR*1000;            // fixed navigation time (ms), aligned with animation
+  const FALLBACK_MS=2400;                 // safety cap in case everything stalls
   let sucking=false, suckStart=0, suckT=0;
   let navTimer=null, fallbackTimer=null;
   const linkEl=document.getElementById('screenlink');
@@ -306,25 +308,16 @@
       document.body.classList.add('entering');
       const target=linkEl.href;
 
-      // Always schedule navigation at the fixed animation duration.
+      // Fixed navigation: always leave after ANIM_MS, regardless of preload state.
       navTimer=setTimeout(()=>{
         if(sucking) window.location.replace(target);
       },ANIM_MS);
 
-      // Preload the next page so there is no black delay after animation.
+      // Preload the next page in parallel so there is no black delay after animation.
       const preload=document.createElement('iframe');
       preload.src=target;
       preload.style.cssText='position:fixed;top:-999px;left:-999px;width:1px;height:1px;border:none;opacity:0;pointer-events:none;';
-      preload.onload=()=>{
-        // If animation has already ended, go immediately.
-        if(!sucking) return;
-        const elapsed=performance.now()-suckStart;
-        if(elapsed>=ANIM_MS){
-          clearTimeout(navTimer);
-          if(sucking) window.location.replace(target);
-        }
-        // Otherwise, do nothing: navTimer will switch at ANIM_MS.
-      };
+      // Intentionally: onload does NOT trigger navigation; we always use the fixed ANIM_MS timer.
       document.body.appendChild(preload);
 
       // Fallback: if something is stuck, still navigate.
