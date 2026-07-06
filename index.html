@@ -292,8 +292,9 @@
   layout();
 
   // ---- click-to-enter: the vortex graphic expands over the mosaic, then the core blacks it out ----
-  const SUCK_DUR=2.1, SUCK_NAV=1.5;   // allow vortex to play; load page early, navigate before black hang
+  const ANIM_MS=1750, FALLBACK_MS=2400;   // fixed animation time; safety cap
   let sucking=false, suckStart=0, suckT=0;
+  let navTimer=null, fallbackTimer=null;
   const linkEl=document.getElementById('screenlink');
   if(linkEl){
     linkEl.addEventListener('click',e=>{
@@ -305,31 +306,39 @@
       document.body.classList.add('entering');
       const target=linkEl.href;
 
-      // Start loading the next page immediately so there is no black delay after animation.
+      // Always schedule navigation at the fixed animation duration.
+      navTimer=setTimeout(()=>{
+        if(sucking) window.location.replace(target);
+      },ANIM_MS);
+
+      // Preload the next page so there is no black delay after animation.
       const preload=document.createElement('iframe');
       preload.src=target;
       preload.style.cssText='position:fixed;top:-999px;left:-999px;width:1px;height:1px;border:none;opacity:0;pointer-events:none;';
       preload.onload=()=>{
-        // Give vortex a short head start, then switch while animation is near-complete.
-        if(sucking){
-          setTimeout(()=>{
-            if(sucking) window.location.replace(target);
-          },200);
+        // If animation has already ended, go immediately.
+        if(!sucking) return;
+        const elapsed=performance.now()-suckStart;
+        if(elapsed>=ANIM_MS){
+          clearTimeout(navTimer);
+          if(sucking) window.location.replace(target);
         }
+        // Otherwise, do nothing: navTimer will switch at ANIM_MS.
       };
       document.body.appendChild(preload);
 
-      // Fallback: if iframe never fires onload, ensure we still navigate.
-      const fallback=setTimeout(()=>{
+      // Fallback: if something is stuck, still navigate.
+      fallbackTimer=setTimeout(()=>{
         window.location.href=target;
-      },SUCK_NAV*1000);
+      },FALLBACK_MS);
 
       // Watch for tab-switch / page-hide so we can clean up; don't cancel while user is on the page.
       const onVisibility=()=>{
         if(document.hidden){
           sucking=false;
           document.body.classList.remove('entering');
-          clearTimeout(fallback);
+          clearTimeout(navTimer);
+          clearTimeout(fallbackTimer);
         }
       };
       document.addEventListener('visibilitychange', onVisibility);
