@@ -801,6 +801,10 @@ function makeBand(cfg){
   const gl=canvas.getContext('webgl2',{alpha:true,premultipliedAlpha:false,antialias:true});
   if(!gl){ canvas.style.display='none'; return; }   // container gradient remains as graceful fallback
 
+  /* ── context-loss safety ── */
+  canvas.addEventListener('webglcontextlost',function(e){e.preventDefault();setRunning(false);},false);
+  canvas.addEventListener('webglcontextrestored',function(){if(!reduceMotion&&visible)setRunning(true);},false);
+
   function compile(t,s){const sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);
     if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS)){console.error(gl.getShaderInfoLog(sh));return null;}return sh;}
   const prog=gl.createProgram();
@@ -972,6 +976,7 @@ function makeBand(cfg){
    130-grid and centred on the nucleus, so from 16:9 to 9:16 the core
    is always in frame; gravity lens on everywhere, phantom cursor when
    idle, a shooting star crosses every ~14s. */
+try{
 makeBand({
   id:'mosaic-galaxy',
   focalRow:33, focalCol:84,
@@ -979,6 +984,7 @@ makeBand({
   drive:true,
   shootEvery:14000
 });
+}catch(e){console.error('Mosaic init error:',e.message);}
 })();
 </script>
 </body>
