@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ace Werk</title>
+<title>Ace Werk — Product Studio for Design, Code, Localization &amp; Growth</title>
+<meta name="description" content="Founder-led product studio designing, building, localizing, and marketing complex products for startups and scaling teams. Senior work, no bloat.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
@@ -63,12 +64,12 @@
 </style>
 </head>
 <body>
-  <canvas id="stage"></canvas>
+  <canvas id="stage" aria-label="Interactive mosaic forming the Ace Werk brand mark, a figure seated at a monitor" role="img"></canvas>
   <a id="screenlink" href="/services" aria-label="Enter the vortex"></a>
   <div class="scrim top"></div>
   <div class="scrim bottom"></div>
   <div class="mark"><h1>ACE&nbsp;WERK</h1><div class="rule"></div><a id="entercta" class="enter-cta" href="/services">See what we do <span class="arw" aria-hidden="true">&rarr;</span></a></div>
-  <div class="foot"><p>Where design, code and marketing play a winning hand.</p><div class="hint" id="hint">Move across the mosaic</div></div>
+  <div class="foot"><h2>Where design, code and marketing play a winning hand.</h2><div class="hint" id="hint">Move across the mosaic</div></div>
   <div class="fallback" id="fallback">Your browser can't render this WebGL mosaic.<br>Try a current version of Chrome, Safari, Firefox or Edge.</div>
 
 <script>
@@ -505,5 +506,10 @@
   requestAnimationFrame(frame);
 })();
 </script>
+<noscript>
+  <div style="position:fixed;inset:0;display:grid;place-items:center;z-index:9;padding:24px;text-align:center;background:radial-gradient(125% 125% at 50% 44%,#101a2e 0%,#0a1120 52%,#05070d 100%);color:#cdd6e6;font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.6;">
+    <p>Ace Werk is a founder-led product studio. We design, build, localize, and market complex products for startups and scaling teams — the senior crew behind a crypto payments platform that reached nine-figure annual transaction volume.</p>
+  </div>
+</noscript>
 </body>
 </html>
