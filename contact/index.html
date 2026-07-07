@@ -108,11 +108,9 @@
     }
 
     /* ══════ HERO — tight, high, art breathing behind ══════ */
-    .hero-block {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: clamp(24px, 4vh, 44px) clamp(20px, 4vw, 48px) clamp(18px, 3vh, 30px);
-      pointer-events: none;
+    .hero-shell {
+      margin-top: clamp(24px, 4vh, 44px);
+      margin-bottom: clamp(18px, 3vh, 30px);
     }
     .hero-label {
       font-family: 'Space Grotesk', sans-serif;
@@ -120,7 +118,6 @@
       letter-spacing: 0.24em; text-transform: uppercase;
       color: rgba(215,224,240,0.95);
       margin-bottom: 12px;
-      text-shadow: 0 1px 4px rgba(4,6,11,1), 0 2px 14px rgba(4,6,11,0.95);
     }
     .hero-title {
       font-family: 'Orbitron', sans-serif;
@@ -128,7 +125,6 @@
       font-size: clamp(28px, 4.6vw, 52px);
       line-height: 1.12; letter-spacing: 0.08em;
       color: #ffffff; text-transform: uppercase;
-      text-shadow: 0 2px 18px rgba(4,6,11,0.95), 0 1px 0 rgba(0,0,0,0.6);
       max-width: 780px;
     }
 
@@ -535,10 +531,12 @@
 
     <main>
       <!-- ══════ HERO ══════ -->
-      <section class="hero-block" aria-labelledby="hero-title">
-        <div class="hero-label">Get in touch</div>
-        <h1 id="hero-title" class="hero-title">Tell us what you&rsquo;re building.</h1>
-      </section>
+      <div class="content-wrap site-container">
+        <div class="content-shell hero-shell reveal">
+          <div class="hero-label">Get in touch</div>
+          <h1 id="hero-title" class="hero-title">Tell us what you&rsquo;re building.</h1>
+        </div>
+      </div>
 
       <!-- ══════ ONE CONTENT SHELL ══════ -->
       <div class="content-wrap site-container">
