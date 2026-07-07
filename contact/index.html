@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Contact — Start a conversation with Ace Werk</title>
-  <meta name="description" content="Tell us about your product. We reply within one business day — direct from founders, not sales.">
+  <title>Contact — Start a Project with Ace Werk</title>
+  <meta name="description" content="Tell Ace Werk what you're building. Senior product, design, and growth help for scaling teams — reply within one business day.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Rajdhani:wght@400;500&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,8 +14,8 @@
       --canvas: #060912;
       --surface: #0c1122;
       --surface-plus: #11182b;
-      --accent: #e9a83c;
-      --accent-soft: #f2c878;
+      --accent: #d49a2e;
+      --accent-soft: #f4d39e;
       --ink: #e5e7f0;
       --ink-muted: rgba(190,200,220,0.88);
       --border: rgba(255,255,255,0.08);
@@ -79,11 +79,7 @@
       padding: 0 clamp(20px, 3vw, 40px);
       height: 52px;
     }
-    .nav-inner {
-      width: 100%; max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-    }
+    
     .nav-logo {
       font-family: 'Orbitron', sans-serif;
       font-weight: 500; font-size: 24px;
@@ -490,7 +486,26 @@
         transition-duration: 0.01ms !important;
       }
     }
-  </style>
+  
+/* Unified Container Pattern:
+   - Exact alignment for header controls and main content.
+   - Same max-width and padding used everywhere.
+*/
+.site-container {
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 48px;
+  margin: 0 auto;
+}
+
+/* Header wrapper: same alignment rules as content-wrap. */
+.header-inner-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+</style>
 </head>
 <body>
 
@@ -501,12 +516,12 @@
 
   <!-- ══════ NAVIGATION ══════ -->
   <header class="nav-bar" role="banner">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo" aria-label="Ace Werk home">Ace Werk</a>
+    <div class="header-inner-wrapper site-container">
+      <a href="index.html" class="nav-logo" aria-label="Ace Werk home">Ace Werk</a>
       <nav class="nav-links" role="navigation" aria-label="Main navigation">
-        <a href="/services">Services</a>
-        <a href="/our-team">Our Team</a>
-        <a href="/contact" class="active" aria-current="page">Contact</a>
+        <a href="services.html">Services</a>
+        <a href="our-team.html">Our Team</a>
+        <a href="contact.html" class="active" aria-current="page">Contact</a>
       </nav>
     </div>
   </header>
@@ -517,17 +532,17 @@
       <!-- ══════ HERO ══════ -->
       <section class="hero-block" aria-labelledby="hero-title">
         <div class="hero-label">Get in touch</div>
-        <h1 id="hero-title" class="hero-title">Let&rsquo;s talk about<br>your project</h1>
+        <h1 id="hero-title" class="hero-title">Tell us what you&rsquo;re building.</h1>
       </section>
 
       <!-- ══════ ONE CONTENT SHELL ══════ -->
-      <div class="content-wrap">
+      <div class="content-wrap site-container">
         <div class="content-shell reveal">
 
           <!-- Contact Form + Info -->
           <section class="topic" aria-label="Contact form">
-            <div class="section-label">Start a conversation</div>
-            <h2 class="section-title">Tell us about your project</h2>
+            <h2 class="section-title">Start the conversation</h2>
+            <p class="intro-copy">A few details is all we need to point you in the right direction.</p>
 
             <div class="form-grid">
               <!-- Form -->
@@ -578,7 +593,7 @@
                       placeholder="Tell us about your project, goals, timeline — whatever helps us understand what you need."
                       required></textarea>
                   </div>
-                  <button type="submit" class="form-submit">Send Message</button>
+                  <button type="submit" class="form-submit">Send message</button>
 
                   <!-- Simple success / error area for Formspree redirect -->
                   <p id="form-status" style="margin-top:12px; font-size:12px; color: var(--ink-muted);"></p>
@@ -618,7 +633,7 @@
                       status.textContent = 'Network error. Please try again or email info@acewerk.com.';
                     } finally {
                       btn.disabled = false;
-                      btn.textContent = 'Send Message';
+                      btn.textContent = 'Send message';
                     }
                   });
                 })();
@@ -628,13 +643,12 @@
               <!-- Info Panel -->
               <div class="info-panel">
                 <div class="info-item">
-                  <h3 class="info-heading">Email us directly</h3>
-                  <p class="info-text">Prefer to write? Reach us at:</p>
-                  <a class="info-link" href="mailto:info@acewerk.com">info@acewerk.com</a>
+                  <h3 class="info-heading">Prefer email?</h3>
+                  <p class="info-text">Reach us directly at <a class="info-link" href="mailto:info@acewerk.com">info@acewerk.com</a>.</p>
                 </div>
                 <div class="info-item">
                   <h3 class="info-heading">What happens next</h3>
-                  <p class="info-text">We review your message and reply within one business day with next steps tailored to your project.</p>
+                  <p class="info-text">We read every message and reply within one business day with next steps tailored to your project — no autoresponder, no queue.</p>
                 </div>
                 <div class="response-note">
                   <span class="response-dot"></span>
