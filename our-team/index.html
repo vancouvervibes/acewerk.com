@@ -384,8 +384,9 @@
     .reveal { animation: fade-up 0.3s ease-out both; }
 
     /* ── Responsive ── */
-    @media (max-width: 640px) {
-      .nav-bar { height: 44px; padding: 0 16px; }
+    @media (max-width: 700px) {
+      .nav-bar { height: 44px; padding: 0; width: 100%; left: 0; right: 0; }
+      .nav-bar .header-inner-wrapper.site-container { max-width: none; padding: 0 clamp(16px, 4vw, 32px); }
       .nav-logo { font-size: 12px; }
       .nav-links { gap: 14px; }
       .nav-links a { font-size: 11px; }
