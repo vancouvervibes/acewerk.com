@@ -470,11 +470,6 @@
       .nav-logo { font-size: 12px; }
       .nav-links { gap: 14px; }
       .nav-links a { font-size: 11px; }
-      /* On mobile, let nav span full width (no site-container box) */
-      .nav-bar .site-container {
-        max-width: none !important;
-        padding: 0 !important;
-      }
       .page-wrapper { padding-top: 44px; }
       .svc-row, .exp-row { grid-template-columns: 1fr; }
       .form-grid { grid-template-columns: 1fr; }
@@ -519,7 +514,7 @@
   <header class="nav-bar" role="banner">
     <div class="header-inner-wrapper site-container">
       <a href="/" class="nav-logo" aria-label="Ace Werk home">Ace Werk</a>
-      <nav class="nav-links" aria-label="Main navigation">
+      <nav class="nav-links" role="navigation" aria-label="Main navigation">
         <a href="/services/">Services</a>
         <a href="/our-team/">Our Team</a>
         <a href="/contact/" class="active" aria-current="page">Contact</a>
