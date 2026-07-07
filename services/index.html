@@ -52,7 +52,7 @@
       outline-offset: 3px;
     }
 
-    /* ══════ THE VORTEX — full-page living mosaic backdrop ══════ */
+    /* ══════ THE MOSAIC — full-page living mosaic backdrop ══════ */
     .mosaic-bg {
       position: fixed; inset: 0;
       z-index: 0;
@@ -356,6 +356,11 @@
       .nav-logo { font-size: 12px; }
       .nav-links { gap: 14px; }
       .nav-links a { font-size: 11px; }
+      /* On mobile, let nav span full width (no site-container box) */
+      .nav-bar .site-container {
+        max-width: none !important;
+        padding: 0 !important;
+      }
       .page-wrapper { padding-top: 44px; }
       .svc-grid { grid-template-columns: 1fr; }
       .exp-row { grid-template-columns: 1fr; }
@@ -391,7 +396,7 @@
 </head>
 <body>
 
-  <!-- ══════ THE VORTEX — full-page living mosaic ══════ -->
+  <!-- ══════ THE MOSAIC — full-page living mosaic ══════ -->
   <div class="mosaic-bg" aria-hidden="true">
     <canvas id="mosaic-galaxy"></canvas>
   </div>
@@ -621,6 +626,7 @@
               Tell us about your project. We reply within one business day.
             </p>
             <a href="/contact/" class="btn-primary">Get in touch →</a>
+            <a href="https://calendly.com/acewerk/intro" class="btn-primary" target="_blank" rel="noopener noreferrer" style="margin-left:14px">Book a call →</a>
           </section>
 
         </div>
