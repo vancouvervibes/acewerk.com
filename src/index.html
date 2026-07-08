@@ -90,16 +90,33 @@
     }
     .nav-links { display: flex; align-items: center; gap: 24px; }
     .nav-links a {
+      position: relative;
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 300; font-size: 13px;
       letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--ink-muted); text-decoration: none;
-      padding: 4px 0; border-bottom: 1px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast);
+      padding: 0 0 4px 0;
+      transition: color var(--transition-fast);
     }
-    .nav-links a:hover, .nav-links a.active {
+    .nav-links a::after {
+      content: "";
+      position: absolute; left: 0; right: 0;
+      bottom: -1px;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: center;
+      opacity: 0;
+      transition: transform var(--transition-fast), opacity var(--transition-fast);
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
       color: var(--ink);
-      border-bottom-color: var(--accent);
+    }
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      transform: scaleX(1);
+      opacity: 1;
     }
 
     .page-wrapper {
