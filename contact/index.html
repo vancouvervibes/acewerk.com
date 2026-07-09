@@ -1062,27 +1062,40 @@ makeBand({
     field.removeAttribute('aria-describedby');
   }
 
-  /* ── Validate on submit — never preventDefault, let Formspree run ── */
-  form.addEventListener('submit', function() {
+  /* ── Validate on submit — prevent submission when any field is invalid ── */
+  form.addEventListener('submit', function(e) {
+    var hasError = false;
+
     /* Name: required */
     if (nameField.value.trim() === '') {
       showError(nameField, 'Name is required.');
+      hasError = true;
     }
 
     /* Email: required + basic format */
     var emailVal = emailField.value.trim();
     if (emailVal === '') {
       showError(emailField, 'Email is required.');
+      hasError = true;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
       showError(emailField, 'Invalid email format.');
+      hasError = true;
     }
 
     /* Purpose: required (default option value is empty) */
     if (purposeField.value === '') {
       showError(purposeField, 'Please select a purpose.');
+      hasError = true;
     }
 
     /* Company and Message: optional, no validation */
+
+    if (hasError) {
+      e.preventDefault();
+      // Focus the first field with an error
+      var firstErr = document.querySelector('.form-input--error');
+      if (firstErr) firstErr.focus();
+    }
   });
 
   /* ── Clear errors on input/change ── */
