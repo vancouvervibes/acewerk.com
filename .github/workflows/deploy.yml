@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history needed for accurate per-file git log lastmod
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -28,7 +30,7 @@ jobs:
           python-version: "3.11"
 
       - name: Generate sitemap.xml
-        run: python scripts/build_sitemap.py
+        run: python scripts/generate_sitemap.py
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
