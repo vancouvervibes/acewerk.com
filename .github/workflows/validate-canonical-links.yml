@@ -1,0 +1,115 @@
+name: "Validate canonicals and internal links"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate canonicals and links
+        run: |
+          set -euo pipefail
+
+          FAIL=0
+
+          # ---------- helper ----------
+          die() {
+            echo "::error $*"
+            FAIL=1
+          }
+
+          # ---------- canonical expectations ----------
+          declare -A CANONICAL_EXPECTED=(
+            ["index.html"]="https://acewerk.com/"
+            ["services/index.html"]="https://acewerk.com/services/"
+            ["our-team/index.html"]="https://acewerk.com/our-team/"
+            ["contact/index.html"]="https://acewerk.com/contact/"
+          )
+
+          for FILE in "${!CANONICAL_EXPECTED[@]}"; do
+            if [ ! -f "$FILE" ]; then
+              die "Missing file: $FILE"
+              continue
+            fi
+
+            EXPECTED="${CANONICAL_EXPECTED[$FILE]}"
+
+            # Check that canonical tag exists.
+            if ! grep -q "rel=\"canonical\"" "$FILE"; then
+              die "No canonical tag in $FILE"
+            fi
+
+            # Extract canonical href.
+            ACTUAL=$(grep -o 'rel="canonical"[^>]*' "$FILE" \
+                      | grep -o 'href="[^"]*"' \
+                      | sed 's/href="//;s/"$//' \
+                      | head -n1)
+
+            if [ -z "$ACTUAL" ]; then
+              die "Could not parse canonical href in $FILE"
+            fi
+
+            # Enforce exactly one canonical.
+            COUNT=$(grep -c 'rel="canonical"' "$FILE")
+            if [ "$COUNT" -ne 1 ]; then
+              die "Expected 1 canonical in $FILE, found $COUNT"
+            fi
+
+            # Exact match.
+            if [ "$ACTUAL" != "$EXPECTED" ]; then
+              die "Canonical in $FILE: expected $EXPECTED, got $ACTUAL"
+            fi
+          done
+
+          # ---------- internal link rules ----------
+          # Disallowed patterns:
+          # - "/services" without trailing slash (not /services/ and not /services.html)
+          # - "/our-team" without trailing slash
+          # - "/contact" without trailing slash
+          # We only check the four primary HTML files.
+
+          FILES=("index.html" "services/index.html" "our-team/index.html" "contact/index.html")
+
+          for FILE in "${FILES[@]}"; do
+            if [ ! -f "$FILE" ]; then
+              continue
+            fi
+
+            # Extract all href values.
+            HREFS=$(grep -oE 'href="[^"]*"' "$FILE" || true)
+
+            # Check for /services without trailing slash.
+            if echo "$HREFS" | grep -qE 'href="[^"]*/services([^/]|$)"'; then
+              die "$FILE: link to /services without trailing slash"
+            fi
+
+            # /our-team without trailing slash.
+            if echo "$HREFS" | grep -qE 'href="[^"]*/our-team([^/]|$)"'; then
+              die "$FILE: link to /our-team without trailing slash"
+            fi
+
+            # /contact without trailing slash.
+            if echo "$HREFS" | grep -qE 'href="[^"]*/contact([^/]|$)"'; then
+              die "$FILE: link to /contact without trailing slash"
+            fi
+
+            # No .html links for main paths.
+            if echo "$HREFS" | grep -qE 'href="[^"]*/contact\.html"'; then
+              die "$FILE: link uses /contact.html (should use /contact/)"
+            fi
+          done
+
+          if [ "$FAIL" -ne 0 ]; then
+            echo "Validation failed. See errors above."
+            exit 1
+          fi
+
+          echo "All canonicals and internal links OK."
