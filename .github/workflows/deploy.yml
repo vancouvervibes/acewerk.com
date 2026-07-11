@@ -32,6 +32,25 @@ jobs:
       - name: Generate sitemap.xml
         run: python scripts/generate_sitemap.py
 
+      - name: Validate sitemap.xml against sitemap 0.9 XSD
+        run: |
+          set -euo pipefail
+          SITEMAP="sitemap.xml"
+          XSD_URL="https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+          XSD_FILE="/tmp/sitemap-0.9.xsd"
+
+          if ! command -v xmllint >/dev/null 2>&1; then
+            echo "Installing xmllint (libxml2-utils)"
+            sudo apt-get update -qq
+            sudo apt-get install -qq -y libxml2-utils >/dev/null
+          fi
+
+          echo "Fetching sitemap 0.9 XSD from ${XSD_URL}..."
+          curl -fsSL -o "${XSD_FILE}" "${XSD_URL}"
+
+          echo "Validating ${SITEMAP}..."
+          xmllint --noout --schema "${XSD_FILE}" "${SITEMAP}"
+
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
