@@ -1,50 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script defer src="https://x.acewerk.com/tessera.js" data-website-id="15435e6c-c2e0-4995-bd8e-db662d4474f3"></script>
-<link rel="canonical" href="https://acewerk.com/">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ace Werk — Product Studio for Design, Code, Localization &amp; Growth</title>
-<meta name="description" content="Founder-led product studio designing, building, localizing, and marketing complex products for startups and scaling teams. Senior work, no bloat.">
-<!-- Open Graph / Social -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Ace Werk">
-<meta property="og:title" content="Ace Werk — Product Studio for Design, Code, Localization &amp; Growth">
-<meta property="og:description" content="Founder-led product studio designing, building, localizing, and marketing complex products for startups and scaling teams. Senior work, no bloat.">
-<meta property="og:url" content="https://acewerk.com/">
-<meta property="og:image" content="https://acewerk.com/assets/og/ace-werk-og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Ace Werk — WebGL mosaic of a retro monitor rendering a black hole, gold on deep navy">
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Ace Werk — Product Studio for Design, Code, Localization &amp; Growth">
-<meta name="twitter:description" content="Founder-led product studio designing, building, localizing, and marketing complex products for startups and scaling teams. Senior work, no bloat.">
-<meta name="twitter:image" content="https://acewerk.com/assets/og/ace-werk-og.png">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "@id": "https://acewerk.com/#organization",
-  "name": "Ace Werk",
-  "url": "https://acewerk.com/",
-  "logo": "https://acewerk.com/assets/icons/logo.png",
-  "description": "Founder-led product studio: design, engineering, localization, and growth for startups and scaling teams.",
-  "sameAs": [
-    "https://www.linkedin.com/company/135276398/",
-    "https://github.com/vancouvervibes"
-  ],
-  "founder": {
-    "@id": "https://acewerk.com/#illya"
-  },
-  "employee": [
-    { "@id": "https://acewerk.com/#illya" },
-    { "@id": "https://acewerk.com/#albert" },
-    { "@id": "https://acewerk.com/#liza" }
-  ]
-}
-</script>
+<title>Ace Werk</title>
 <link rel="preload" href="/assets/fonts/orbitron-500-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
@@ -65,7 +24,7 @@
   .mark h1{font-family:'Orbitron',sans-serif; font-weight:500;color:var(--gold);font-size:clamp(28px,6.4vw,76px);letter-spacing:.12em;line-height:1;text-shadow:0 2px 0 rgba(0,0,0,.55),0 0 26px rgba(212,154,46,.28);}
   .mark .rule{width:min(220px,42vw);height:2px;margin:14px auto 0;background:linear-gradient(to right,transparent,var(--gold-soft),transparent);opacity:.7;}
   .foot{position:fixed;bottom:max(4.2vh,18px);left:0;right:0;z-index:3;text-align:center;pointer-events:none}
-  .foot h2, .foot p{color:#ffffff;font-size:clamp(11px,2.5vw,16px);letter-spacing:.16em;text-transform:uppercase;opacity:.82;text-shadow:0 1px 8px rgba(0,0,0,.7);}
+  .foot p{color:var(--ink);font-size:clamp(12px,2.5vw,16px);letter-spacing:.16em;text-transform:uppercase;opacity:.82;text-shadow:0 1px 8px rgba(0,0,0,.7);}
   .hint{margin-top:12px;color:var(--gold-soft);font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.55;transition:opacity 1s ease;}
   .hint.gone{opacity:0}
   /* discoverability CTA under the mark: on-system ghost button (radius-sm, uppercase 0.14em, accent hover-lift) */
@@ -104,12 +63,12 @@
 </style>
 </head>
 <body>
-  <canvas id="stage" aria-label="Interactive mosaic forming the Ace Werk brand mark, a figure seated at a monitor" role="img"></canvas>
-  <a id="screenlink" href="/services/" aria-label="Enter the vortex"></a>
+  <canvas id="stage"></canvas>
+  <a id="screenlink" href="our-team.html" aria-label="Explore our work"></a>
   <div class="scrim top"></div>
   <div class="scrim bottom"></div>
-  <div class="mark"><h1>ACE&nbsp;WERK</h1><div class="rule"></div><a id="entercta" class="enter-cta" href="/services/">See what we do <span class="arw" aria-hidden="true">&rarr;</span></a></div>
-  <div class="foot"><h2>Where design, code and marketing play a winning hand.</h2><div class="hint" id="hint">Move across the mosaic</div></div>
+  <div class="mark"><h1>ACE&nbsp;WERK</h1><div class="rule"></div><a id="entercta" class="enter-cta" href="our-team.html">See what we do <span class="arw" aria-hidden="true">&rarr;</span></a></div>
+  <div class="foot"><p>Where design, code and marketing play a winning hand.</p><div class="hint" id="hint">Move across the mosaic</div></div>
   <div class="fallback" id="fallback">Your browser can't render this WebGL mosaic.<br>Try a current version of Chrome, Safari, Firefox or Edge.</div>
 
 <script>
@@ -237,10 +196,10 @@
 
   gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
 
-  // ---- vortex region ----
+  // ---- animation region ----
   const VCX=65.0,VCY=46.0,VRV=16.0,VCORE=3.2,VARMS=2.0,VPITCH=0.55,VSPEED=1.3,VSTR=1.05;
   const MONx0=49,MONx1=82,MONy0=33,MONy1=57;   // monitor screen, in tile coords
-  const vIdx=[],vR=[],vTh=[],vAff=[],vDisk=[],vCore=[],inVortex=new Uint8Array(N); let rowMin=ROWS-1,rowMax=0;
+  const vIdx=[],vR=[],vTh=[],vAff=[],vDisk=[],vCore=[],inCenter=new Uint8Array(N); let rowMin=ROWS-1,rowMax=0;
   function ss(x){x=x<0?0:x>1?1:x;return x*x*(3-2*x);}
   for(let gy=MONy0;gy<=MONy1;gy++)for(let gx=MONx0;gx<=MONx1;gx++){
     const dx=gx-VCX,dy=gy-VCY,r=Math.hypot(dx,dy); if(r>=VRV)continue;
@@ -249,13 +208,13 @@
     if(gx>=56&&gx<=75&&gy>=47&&blue<0.06) continue;   // skip the back of his head/shoulders
     const br=(baseCol[o]+baseCol[o+1]+baseCol[o+2])/3;
     let aff=blue*2.4+br*0.6-0.04; aff=aff<0?0:aff>1?1:aff;
-    vIdx.push(idx);inVortex[idx]=1;vR.push(r);vTh.push(Math.atan2(dy,dx));vAff.push(aff);vDisk.push(ss(1-r/VRV));vCore.push(ss(r/VCORE));
+    vIdx.push(idx);inCenter[idx]=1;vR.push(r);vTh.push(Math.atan2(dy,dx));vAff.push(aff);vDisk.push(ss(1-r/VRV));vCore.push(ss(r/VCORE));
     if(gy<rowMin)rowMin=gy; if(gy>rowMax)rowMax=gy;
   }
   const vCount=vIdx.length, sliceStart=rowMin*COLS*3, sliceEnd=(rowMax+1)*COLS*3;
 
-  // --- polar coords for EVERY tile around the vortex centre (tile units), for the click-to-enter
-  //     takeover: the vortex graphic is re-evaluated at a normalised radius, so it scales up as a
+  // --- polar coords for EVERY tile around the center (tile units), for the click-to-enter
+  //     takeover: the graphic is re-evaluated at a normalised radius, so it scales up as a
   //     pure colour effect -- a zoom illusion in which no tile ever moves ---
   const allR=new Float32Array(N), allTh=new Float32Array(N);
   let maxTileR=0;
@@ -281,7 +240,7 @@
     for(const ch of NEON_WORD){ const G=GLYPH[ch];
       for(const cc of G.c){ const gx=penX+cc[0], gy=NEON_TOP+cc[1], idx=gy*COLS+gx;
         // only paint tiles that belong to the liftable screen -> the man's head carves letters naturally
-        if(gx>=0&&gx<COLS&&gy>=0&&gy<ROWS&&isScreen[idx]&&!letterMask[idx]){ letterMask[idx]=1; neonTiles.push({o:idx*3,v:inVortex[idx]}); }
+        if(gx>=0&&gx<COLS&&gy>=0&&gy<ROWS&&isScreen[idx]&&!letterMask[idx]){ letterMask[idx]=1; neonTiles.push({o:idx*3,v:inCenter[idx]}); }
       }
       penX+=G.w+NEON_GAP;
     }
@@ -291,7 +250,7 @@
       for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){ if(!dx&&!dy)continue;
         const nx=gx+dx, ny=gy+dy, ni=ny*COLS+nx;
         if(nx<0||nx>=COLS||ny<0||ny>=ROWS) continue;
-        if(isScreen[ni]&&!letterMask[ni]&&!haloMask[ni]){ haloMask[ni]=1; neonHalo.push({o:ni*3,v:inVortex[ni]}); }
+        if(isScreen[ni]&&!letterMask[ni]&&!haloMask[ni]){ haloMask[ni]=1; neonHalo.push({o:ni*3,v:inCenter[ni]}); }
       }
     }
   }
@@ -360,8 +319,8 @@
   }
   layout();
 
-  // ---- click-to-enter: the vortex graphic expands over the mosaic, then the core blacks it out ----
-  const SUCK_DUR=1.75;                    // seconds: how long the vortex runs
+  // ---- click-to-enter: the graphic expands over the mosaic, then the core blacks it out ----
+  const SUCK_DUR=1.75;                    // seconds: how long the animation runs
   const ANIM_MS=SUCK_DUR*1000;            // fixed navigation time (ms), aligned with animation
   const FALLBACK_MS=2400;                 // safety cap in case everything stalls
   let sucking=false, suckStart=0, suckT=0;
@@ -419,8 +378,8 @@
   const ATTRACT_RISE=1.0, ATTRACT_HOLD=1.4, ATTRACT_FALL=1.2, ATTRACT_GAP=4.5; // s, one pulse shape
   const ATTRACT_CYCLE=ATTRACT_RISE+ATTRACT_HOLD+ATTRACT_FALL+ATTRACT_GAP;
   let attractPhase=-ATTRACT_LEAD;              // seconds; negative = counting down the quiet lead-in
-  let vortexT=0,lastNow=0,mon=0,neonT=0;   // vortex phase + smoothed screen-hover amount + neon phase
-  // a few warm embers that drift inside the vortex on hover
+  let animT=0,lastNow=0,mon=0,neonT=0;   // animation phase + smoothed screen-hover amount + neon phase
+  // a few warm embers that drift inside the center on hover
   const EMB=[]; for(let i=0;i<5;i++) EMB.push({r:2.4+Math.random()*5.2,a:Math.random()*6.283,sp:0.6+Math.random()*0.8,bob:0.5+Math.random()*0.9,ph:Math.random()*6.283,fl:1.6+Math.random()*1.8});
   function c01(x){return x<0?0:x>1?1:x;}
 
@@ -467,16 +426,16 @@
       }
       gl.bindBuffer(gl.ARRAY_BUFFER,rb); gl.bufferSubData(gl.ARRAY_BUFFER,0,rise);
 
-      // vortex: always spinning; speeds up + adds drifting embers while driven (hover or attract)
+      // spiral: always spinning; speeds up + adds drifting embers while driven (hover or attract)
       mon+=(drive-mon)*0.06;
       const speed=VSPEED*(1.0+mon*1.2+(sucking?4.0*ss(suckT/SUCK_DUR):0));  // arms whip up during entry
-      vortexT+=dt*speed;                          // integrate so speed changes stay smooth
+      animT+=dt*speed;                          // integrate so speed changes stay smooth
       const gMul=1.0+mon*0.6, cyan=mon*0.22;      // brighter + cooler/cyan when driven
       // resting accretion glow: a steady blue disk-haze so the black hole reads as "alive" at rest.
       // hover/attract still wins clearly via brighter arms, cyan shift, a wider halo, embers, speed + lift.
       const haloR=0.02+mon*0.03, haloG=0.05+mon*0.11, haloB=0.16+mon*0.16;
       for(let j=0;j<vCount;j++){
-        const phase=vTh[j]*VARMS+vR[j]*VPITCH - vortexT;
+        const phase=vTh[j]*VARMS+vR[j]*VPITCH - animT;
         let arm=0.5+0.5*Math.sin(phase); arm=(arm-0.18)/0.82; arm=arm<0?0:arm>1?1:arm;  // lifted floor -> arms read at rest
         const shape=vDisk[j]*vCore[j]*vAff[j];      // disk footprint: dark at the singularity, glowing in the ring
         const g=arm*shape*VSTR, o=vIdx[j]*3;
@@ -487,10 +446,10 @@
       if(mon>0.01){                              // subtle warm embers, hover only
         const te=now*0.001;
         for(let i=0;i<EMB.length;i++){
-          const e=EMB[i], ang=e.a+vortexT*0.5*e.sp, rr=e.r+Math.sin(te*e.bob+e.ph)*1.2;
+          const e=EMB[i], ang=e.a+animT*0.5*e.sp, rr=e.r+Math.sin(te*e.bob+e.ph)*1.2;
           const gxr=Math.round(VCX+Math.cos(ang)*rr), gyr=Math.round(VCY+Math.sin(ang)*rr-1.5);
           const idx=gyr*COLS+gxr;
-          if(gxr<0||gxr>=COLS||gyr<0||gyr>=ROWS||!inVortex[idx]) continue;
+          if(gxr<0||gxr>=COLS||gyr<0||gyr>=ROWS||!inCenter[idx]) continue;
           const flick=0.55+0.45*Math.sin(te*e.fl+e.ph), it=mon*flick*0.6, o=idx*3;
           colArr[o]=c01(colArr[o]+it*0.9); colArr[o+1]=c01(colArr[o+1]+it*0.45); colArr[o+2]=c01(colArr[o+2]+it*0.12);
         }
@@ -502,9 +461,9 @@
       if(nEnv>0){ const buzz=0.94+0.06*(0.5+0.5*Math.sin(now*0.03)); nEnv*=buzz; }  // gentle tube shimmer while lit
       applyNeon(nEnv*(0.9+0.34*mon));                         // a touch brighter while driven
 
-      // ================ click-to-enter: the vortex graphic expands over the mosaic ================
+      // ================ click-to-enter: the graphic expands over the mosaic ================
       // Pure colour illusion -- no tile moves. Every tile is re-evaluated with the SAME arm formula
-      // at a normalised radius rn = r/scale, so the graphic reads as the original vortex magnified,
+      // at a normalised radius rn = r/scale, so the graphic reads as the original spiral magnified,
       // spinning in the same direction. A growing black core (C0) then swallows the whole frame.
       if(sucking){
         const pR=ss(Math.min(suckT/2.1,1));                   // disk expansion: full mosaic by 2.1s
@@ -518,7 +477,7 @@
         for(let k=0;k<N;k++){
           const rn=allR[k]/s; if(rn>=VRV) continue;           // outside the expanding rim: untouched
           let cov=(VRV-rn)/2.5; cov=cov>1?1:cov; cov=cov*cov*(3-2*cov); cov*=fadeIn;   // soft leading edge
-          let arm=0.5+0.5*Math.sin(allTh[k]*VARMS+rn*VPITCH - vortexT);
+          let arm=0.5+0.5*Math.sin(allTh[k]*VARMS+rn*VPITCH - animT);
           arm=(arm-0.18)/0.82; arm=arm<0?0:arm>1?1:arm;
           const disk=ss(1-rn/VRV);
           let core=(rn-coreR)/2.6; core=core<0?0:core>1?1:core; core=core*core*(3-2*core);   // soft horizon edge
@@ -528,7 +487,7 @@
           const vr=c01(shape*(0.10+arm*0.18*gB));
           const vg=c01(shape*(0.10+arm*0.34*gB));
           const vb=c01(shape*(0.22+arm*0.85*gB));
-          const sr=inVortex[k]?colArr[o]:baseCol[o], sg=inVortex[k]?colArr[o+1]:baseCol[o+1], sb=inVortex[k]?colArr[o+2]:baseCol[o+2];
+          const sr=inCenter[k]?colArr[o]:baseCol[o], sg=inCenter[k]?colArr[o+1]:baseCol[o+1], sb=inCenter[k]?colArr[o+2]:baseCol[o+2];
           colArr[o]=sr+(vr-sr)*cov; colArr[o+1]=sg+(vg-sg)*cov; colArr[o+2]=sb+(vb-sb)*cov;
         }
       }
@@ -546,10 +505,5 @@
   requestAnimationFrame(frame);
 })();
 </script>
-<noscript>
-  <div style="position:fixed;inset:0;display:grid;place-items:center;z-index:9;padding:24px;text-align:center;background:radial-gradient(125% 125% at 50% 44%,#101a2e 0%,#0a1120 52%,#05070d 100%);color:#cdd6e6;font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.6;">
-    <p>Ace Werk is a founder-led product studio. We design, build, localize, and market complex products for startups and scaling teams — the senior crew behind a crypto payments platform that reached nine-figure annual transaction volume.</p>
-  </div>
-</noscript>
 </body>
 </html>

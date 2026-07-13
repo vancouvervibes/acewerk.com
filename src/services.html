@@ -2,69 +2,23 @@
 <html lang="en">
 <head>
   <script defer src="https://x.acewerk.com/tessera.js" data-website-id="15435e6c-c2e0-4995-bd8e-db662d4474f3"></script>
-  <link rel="canonical" href="https://acewerk.com/contact/">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Contact - Ace Werk</title>
-  <meta name="description" content="Tell Ace Werk what you're building. Senior product, design, and growth help for scaling teams — reply within one business day.">
-  <!-- Open Graph / Social -->
+  <title>Services — Design, Engineering, Localization &amp; AI Workflows | Ace Werk</title>
+  <meta name="description" content="Design, engineering, growth, localization, and AI workflow consulting from one senior team. Scale your product without scaling headcount.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Ace Werk">
-  <meta property="og:title" content="Contact - Ace Werk">
-  <meta property="og:description" content="Tell Ace Werk what you're building. Senior product, design, and growth help for scaling teams — reply within one business day.">
-  <meta property="og:url" content="https://acewerk.com/contact/">
+  <meta property="og:title" content="Services — Design, Engineering, Localization &amp; AI Workflows | Ace Werk">
+  <meta property="og:description" content="Design, engineering, growth, localization, and AI workflow consulting from one senior team. Scale your product without scaling headcount.">
+  <meta property="og:url" content="https://acewerk.com/services/">
   <meta property="og:image" content="https://acewerk.com/assets/og/ace-werk-og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Ace Werk — WebGL mosaic of a retro monitor rendering a black hole, gold on deep navy">
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Contact - Ace Werk">
-  <meta name="twitter:description" content="Tell Ace Werk what you're building. Senior product, design, and growth help for scaling teams — reply within one business day.">
+  <meta name="twitter:title" content="Services — Design, Engineering, Localization &amp; AI Workflows | Ace Werk">
+  <meta name="twitter:description" content="Design, engineering, growth, localization, and AI workflow consulting from one senior team. Scale your product without scaling headcount.">
   <meta name="twitter:image" content="https://acewerk.com/assets/og/ace-werk-og.png">
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://acewerk.com/#organization",
-  "name": "Ace Werk",
-  "url": "https://acewerk.com/",
-  "logo": "https://acewerk.com/assets/icons/logo.png",
-  "description": "Founder-led product studio: design, engineering, localization, and growth for startups and scaling teams.",
-  "sameAs": [
-    "https://www.linkedin.com/company/135276398/",
-    "https://github.com/vancouvervibes"
-  ],
-  "founder": {
-    "@id": "https://acewerk.com/#illya"
-  },
-  "employee": [
-    { "@id": "https://acewerk.com/#illya" },
-    { "@id": "https://acewerk.com/#albert" },
-    { "@id": "https://acewerk.com/#liza" }
-  ]
-}
-</script>
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://acewerk.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Contact",
-        "item": "https://acewerk.com/contact/"
-      }
-    ]
-  }
-  </script>
   <link rel="preload" href="/assets/fonts/orbitron-500-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/fonts/fonts.css">
@@ -96,11 +50,6 @@
       --fs-lead:          clamp(22px, 1.2vw + 14px, 30px);  /* intro lead, CTA headline */
       --fs-section-title: clamp(26px, 1.6vw + 15px, 38px);
       --fs-stat:          clamp(34px, 3.5vw + 10px, 56px);
-
-      /* ── Error tokens (contact form validation) ── */
-      --error: #f76858;
-      --error-muted: rgba(255,165,147,0.82);
-      --error-subtle: rgba(247,104,88,0.16);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -136,7 +85,6 @@
 
     /* ── Top Navigation ── */
     .nav-bar {
-      display: flex; align-items: center;
       position: fixed; top: 0; left: 0; right: 0; z-index: 50;
       background: linear-gradient(to bottom, rgba(10,15,30,0.72), rgba(6,9,18,0.58));
       backdrop-filter: blur(14px) saturate(1.15);
@@ -156,33 +104,16 @@
     }
     .nav-links { display: flex; align-items: center; gap: 24px; }
     .nav-links a {
-      position: relative;
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 300; font-size: 13px;
       letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--ink-muted); text-decoration: none;
-      padding: 2px 0 4px 0;
-      transition: color var(--transition-fast);
+      padding: 4px 0; border-bottom: 1px solid transparent;
+      transition: color var(--transition-fast), border-color var(--transition-fast);
     }
-    .nav-links a::after {
-      content: "";
-      position: absolute; left: 0; right: 0;
-      bottom: -1px;
-      height: 1px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transform-origin: center;
-      opacity: 0;
-      transition: transform var(--transition-fast), opacity var(--transition-fast);
-    }
-    .nav-links a:hover,
-    .nav-links a.active {
+    .nav-links a:hover, .nav-links a.active {
       color: var(--ink);
-    }
-    .nav-links a:hover::after,
-    .nav-links a.active::after {
-      transform: scaleX(1);
-      opacity: 1;
+      border-bottom-color: var(--accent);
     }
 
     .page-wrapper {
@@ -259,14 +190,6 @@
     }
 
     /* ── Intro ── */
-    .lead {
-      font-family: 'Rajdhani', sans-serif;
-      font-weight: 400;
-      font-size: var(--fs-lead);
-      color: #ffffff;
-      margin-bottom: 16px;
-      line-height: 1.35;
-    }
     .intro-copy {
       font-size: var(--fs-body);
       color: var(--ink-muted);
@@ -274,36 +197,34 @@
     }
     .intro-copy + .intro-copy { margin-top: 14px; }
 
-    /* ── Services: ledger rows, not cards ── */
-    .svc-row {
+    /* ── Services: 3×2 card grid ── */
+    .svc-grid {
       display: grid;
-      grid-template-columns: minmax(210px, 300px) 1fr;
-      gap: 8px 36px;
-      padding: 22px 0;
-      border-top: 1px solid var(--rule-soft);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px 36px;
     }
-    .svc-row:first-of-type { border-top: 0; padding-top: 0; }
-    .svc-row:last-of-type { padding-bottom: 0; }
-    .svc-name {
+    .svc-card {
+      min-width: 0;
+    }
+    .svc-card-glyph {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--fs-item-title);
+      color: var(--accent);
+      text-shadow: 0 0 12px rgba(233,168,60,0.45);
+      display: block;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+    .svc-card-title {
       font-family: 'Rajdhani', sans-serif;
       font-weight: 500; font-size: var(--fs-item-title);
       color: #ffffff;
-      display: flex; align-items: baseline; gap: 10px;
+      margin-bottom: 8px;
+      line-height: 1.25;
     }
-    .svc-glyph {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75em; color: var(--accent);
-      text-shadow: 0 0 12px rgba(233,168,60,0.45);
-      /* fixed-width slot: widest glyph (</>) is 3 mono chars ≈ 1.9em;
-         every icon centers inside the same box so titles share one left edge */
-      display: inline-block;
-      width: 2em;
-      text-align: center;
-      flex: 0 0 auto;
-    }
-    .svc-desc {
+    .svc-card-desc {
       font-size: var(--fs-body); color: var(--ink-muted);
-      line-height: 1.7; max-width: 680px;
+      line-height: 1.7;
     }
 
     /* ── Why / Process / Domains: open text columns ── */
@@ -408,140 +329,6 @@
                   inset 0 2px 4px rgba(0,0,0,0.3);
     }
 
-    /* ── Contact Form ── */
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(24px, 4vw, 48px);
-      align-items: start;
-    }
-    .form-group { margin-bottom: 16px; }
-    .form-label {
-      display: block;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 300; font-size: 10px;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-bottom: 6px;
-    }
-    .form-label .optional { opacity: 0.55; }
-    .form-input, .form-select, .form-textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border-radius: var(--radius-sm);
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 300; font-size: 13px;
-      color: var(--ink);
-      background: rgba(6,9,18,0.6);
-      border: 1px solid var(--border);
-      outline: none;
-      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-    }
-    .form-input::placeholder, .form-textarea::placeholder { color: rgba(180,190,210,0.45); }
-    .form-input:focus, .form-select:focus, .form-textarea:focus {
-      border-color: rgba(233,168,60,0.45);
-      box-shadow: 0 0 0 2px rgba(233,168,60,0.12);
-    }
-    .form-select {
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' fill='none' stroke='%23e9a83c' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      padding-right: 32px;
-      cursor: pointer;
-    }
-    .form-select option { background: var(--surface); color: var(--ink); }
-    .form-textarea { min-height: 120px; resize: vertical; }
-
-    /* ── Validation Errors ── */
-    .form-error-message {
-      margin-top: 5px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--error);
-      line-height: 1.4;
-    }
-    .form-error-message::before {
-      content: "";
-      display: inline-block;
-      width: 2px;
-      height: 2px;
-      background: var(--error);
-      border-radius: 50%;
-      margin-right: 6px;
-      vertical-align: middle;
-    }
-    .form-input--error {
-      border-color: var(--error) !important;
-      box-shadow: 0 0 0 2px var(--error-subtle) !important;
-    }
-
-    .form-submit {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 13px 32px;
-      border-radius: var(--radius-sm);
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 400; font-size: 13px;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: #ffffff;
-      background: linear-gradient(to bottom, #b57b15, #93610c);
-      border: none; cursor: pointer;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.35),
-                  inset 0 1px 0 rgba(255,255,255,0.22);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-    }
-    .form-submit:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 5px 14px rgba(0,0,0,0.4),
-                  inset 0 1px 0 rgba(255,255,255,0.28);
-    }
-    .form-submit:active {
-      transform: scale(0.98);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.35),
-                  inset 0 2px 4px rgba(0,0,0,0.3);
-    }
-
-    /* ── Info panel ── */
-    .info-panel { display: flex; flex-direction: column; gap: 16px; }
-    .info-item { min-width: 0; }
-    .info-heading {
-      font-family: 'Rajdhani', sans-serif;
-      font-weight: 500; font-size: var(--fs-item-title);
-      color: #ffffff; margin-bottom: 4px;
-    }
-    .info-text {
-      font-size: var(--fs-body); color: var(--ink-muted);
-      line-height: 1.6;
-    }
-    .info-link {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 400; font-size: 12px;
-      color: var(--accent); text-decoration: none;
-      border-bottom: 1px solid rgba(233,168,60,0.3);
-      transition: border-color var(--transition-fast), color var(--transition-fast);
-      word-break: break-all;
-      margin-top: 4px;
-    }
-    .info-link:hover {
-      color: var(--accent-soft);
-      border-bottom-color: rgba(233,168,60,0.6);
-    }
-    .response-note {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 12px; color: rgba(200,210,228,0.7);
-      margin-top: 8px;
-    }
-    .response-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: #2ea478;
-      flex-shrink: 0;
-    }
-
     /* ── Footer: quiet glass strip ── */
     .site-footer {
       max-width: var(--max-width);
@@ -574,15 +361,13 @@
     .reveal { animation: fade-up 0.3s ease-out both; }
 
     /* ── Responsive ── */
-    @media (max-width: 700px) {
-      .nav-bar { height: 44px; padding: 0; width: 100%; left: 0; right: 0; }
-      .nav-bar .header-inner-wrapper.site-container { max-width: none; padding: 0 clamp(16px, 4vw, 32px); }
-      .nav-logo { font-size: 12px; }
+    @media (max-width: 640px) {
+      .nav-bar { height: 44px; padding: 0 16px; }
       .nav-links { gap: 14px; }
       .nav-links a { font-size: 11px; }
       .page-wrapper { padding-top: 44px; }
-      .svc-row, .exp-row { grid-template-columns: 1fr; }
-      .form-grid { grid-template-columns: 1fr; }
+      .svc-grid { grid-template-columns: 1fr; }
+      .exp-row { grid-template-columns: 1fr; }
     }
 
     /* ── Reduced Motion ── */
@@ -625,9 +410,9 @@
     <div class="header-inner-wrapper site-container">
       <a href="/" class="nav-logo" aria-label="Ace Werk home">Ace Werk</a>
       <nav class="nav-links" role="navigation" aria-label="Main navigation">
-        <a href="/services/">Services</a>
+        <a href="/services/" class="active" aria-current="page">Services</a>
         <a href="/our-team/">Our Team</a>
-        <a href="/contact/" class="active" aria-current="page">Contact</a>
+        <a href="/contact/">Contact</a>
       </nav>
     </div>
   </header>
@@ -638,8 +423,8 @@
       <!-- ══════ HERO ══════ -->
       <div class="content-wrap site-container">
         <div class="content-shell hero-shell reveal">
-          <div class="hero-label">Get in touch</div>
-          <h1 id="hero-title" class="hero-title">Tell us what you&rsquo;re building.</h1>
+          <div class="hero-label">Founder-led product studio</div>
+          <h1 id="hero-title" class="hero-title">Scale your product without scaling your team.</h1>
         </div>
       </div>
 
@@ -647,84 +432,207 @@
       <div class="content-wrap site-container">
         <div class="content-shell reveal">
 
-          <!-- Contact Form + Info -->
-          <section class="topic" aria-label="Contact form">
-            <h2 class="section-title">Start the conversation</h2>
-            <p class="intro-copy">A few details is all we need to point you in the right direction.</p>
+          <!-- Hero body -->
+          <section class="topic" aria-label="Introduction">
+            <p class="intro-copy">
+              We're the senior product, engineering, and growth team that took a crypto payments
+              platform from legacy brand to nine-figure annual transaction volume. Now we bring
+              that standard to other companies — design, build, localize, and grow, all under one
+              roof. No new headcount, no handoff friction, no agency drag.
+            </p>
+          </section>
 
-            <div class="form-grid">
-              <!-- Form -->
-              <div>
-                <form
-                  id="contact-form"
-                  action="https://formspree.io/f/xwvdzvra"
-                  method="POST"
-                  novalidate
-                >
-                  <!-- Subject line for your email -->
-                  <input type="hidden" name="_subject" value="New message from acewerk.com">
-
-                  <!-- Honeypot anti-spam (visually hidden) -->
-                  <div style="position:absolute;left:-9999px;" aria-hidden="true">
-                    <label for="gotcha">Leave this empty</label>
-                    <input type="text" name="_gotcha" id="gotcha" tabindex="-1">
-                  </div>
-
-                  <div class="form-group">
-                    <label class="form-label" for="name">Name</label>
-                    <input class="form-input" type="text" id="name" name="name"
-                      placeholder="Your full name" required autocomplete="name">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="email">Email</label>
-                    <input class="form-input" type="email" id="email" name="email"
-                      placeholder="you@example.com" required autocomplete="email">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="company">Company <span class="optional">(optional)</span></label>
-                    <input class="form-input" type="text" id="company" name="company"
-                      placeholder="Your company or organization" autocomplete="organization">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="purpose">Purpose</label>
-                    <select class="form-select" id="purpose" name="purpose" required>
-                      <option value="" disabled selected>Select a purpose…</option>
-                      <option value="Project">Project</option>
-                      <option value="Partnership">Partnership</option>
-                      <option value="Job">Job</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="message">Message</label>
-                    <textarea class="form-textarea" id="message" name="message"
-                      placeholder="Tell us about your project, goals, timeline — whatever helps us understand what you need."
-                      required></textarea>
-                  </div>
-                  <button type="submit" class="form-submit">Send message</button>
-
-                  <!-- Simple success / error area for Formspree redirect -->
-                  <p id="form-status" style="margin-top:12px; font-size:12px; color: var(--ink-muted);"></p>
-                </form>
-
+          <!-- Services -->
+          <section class="topic" aria-labelledby="services-title">
+            <h2 id="services-title" class="section-title">Services</h2>
+            <div class="svc-grid">
+              <div class="svc-card">
+                <span class="svc-card-glyph" aria-hidden="true">&#9830;</span>
+                <h3 class="svc-card-title">Product &amp; Web Design</h3>
+                <p class="svc-card-desc">
+                  We study your market, read the actual complaints your users leave, and design
+                  flows that answer objections before they surface. For complex products — payments,
+                  money exchange, compliance, logistics, onboarding — we design from experience, not
+                  guesswork.
+                </p>
               </div>
-
-              <!-- Info Panel -->
-              <div class="info-panel">
-                <div class="info-item">
-                  <h3 class="info-heading">Prefer email?</h3>
-                  <p class="info-text">Reach us directly at <a class="info-link" href="mailto:info@acewerk.com">info@acewerk.com</a>.</p>
-                </div>
-                <div class="info-item">
-                  <h3 class="info-heading">What happens next</h3>
-                  <p class="info-text">We read every message and reply within one business day with next steps tailored to your project — no autoresponder, no queue.</p>
-                </div>
-                <div class="response-note">
-                  <span class="response-dot"></span>
-                  We reply within 1 business day.
-                </div>
+              <div class="svc-card">
+                <span class="svc-card-glyph" aria-hidden="true">&lt;/&gt;</span>
+                <h3 class="svc-card-title">Engineering &amp; Development</h3>
+                <p class="svc-card-desc">
+                  Senior engineers with security, finance, logistics, gaming, and high-scale
+                  backgrounds. We ship fast, maintainable systems in React, Next.js, C#, PHP,
+                  and WebGL — and treat performance and security as requirements, not finishing
+                  touches.
+                </p>
+              </div>
+              <div class="svc-card">
+                <span class="svc-card-glyph" aria-hidden="true">&#9674;</span>
+                <h3 class="svc-card-title">Creative Tech</h3>
+                <p class="svc-card-desc">
+                  WebGL, motion, and interactive storytelling that make a product impossible to
+                  forget. This site isn't a pitch for the capability. It's the proof.
+                </p>
+              </div>
+              <div class="svc-card">
+                <span class="svc-card-glyph" aria-hidden="true">&#9652;</span>
+                <h3 class="svc-card-title">Marketing &amp; Growth</h3>
+                <p class="svc-card-desc">
+                  Full-funnel ownership: positioning, rebrands, content, organic community, and
+                  conference demand. We chase qualified pipeline, not vanity impressions.
+                </p>
+              </div>
+              <div class="svc-card">
+                <span class="svc-card-glyph" aria-hidden="true">&#11041;</span>
+                <h3 class="svc-card-title">Localization &amp; Market Entry</h3>
+                <p class="svc-card-desc">
+                  Enter new markets without guessing. We adapt the product, the message, and the
+                  interface for new languages and regions — so expansion reads as native, not
+                  translated. Copy, UX, currency, and compliance handled as one job.
+                </p>
+              </div>
+              <div class="svc-card">
+                <span class="svc-card-glyph" aria-hidden="true">&#8762;</span>
+                <h3 class="svc-card-title">AI Workflow Consulting</h3>
+                <p class="svc-card-desc">
+                  Modernize how your team actually works. We map your workflows, then design
+                  AI-assisted systems that cut manual load and speed up delivery. Practical
+                  automation with measurable time back — not a hype deck.
+                </p>
               </div>
             </div>
+          </section>
+
+          <!-- Why work with us -->
+          <section class="topic" aria-labelledby="why-title">
+            <h2 id="why-title" class="section-title">Why work with us</h2>
+            <div class="col-grid">
+              <div class="col-item">
+                <p class="col-tag">01</p>
+                <h3 class="col-title">One integrated team</h3>
+                <p class="col-desc">Design and engineering build together from day one. No handoffs, no telephone game, no work diluted between departments.</p>
+              </div>
+              <div class="col-item">
+                <p class="col-tag">02</p>
+                <h3 class="col-title">Senior hands only</h3>
+                <p class="col-desc">No junior bench, no bait-and-switch. The people who scope your project are the people who do it.</p>
+              </div>
+              <div class="col-item">
+                <p class="col-tag">03</p>
+                <h3 class="col-title">Custom, never templated</h3>
+                <p class="col-desc">Every build is made for your product. We don't reskin a theme and call it strategy.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- How we work -->
+          <section class="topic" aria-labelledby="process-title">
+            <h2 id="process-title" class="section-title">How we work</h2>
+            <div class="col-grid">
+              <div class="col-item">
+                <p class="col-tag">01</p>
+                <h3 class="col-title">Brief</h3>
+                <p class="col-desc">One focused session to lock goals, audience, and constraints.</p>
+              </div>
+              <div class="col-item">
+                <p class="col-tag">02</p>
+                <h3 class="col-title">Strategy</h3>
+                <p class="col-desc">We map architecture, messaging, and the experience flow before a pixel is drawn.</p>
+              </div>
+              <div class="col-item">
+                <p class="col-tag">03</p>
+                <h3 class="col-title">Build</h3>
+                <p class="col-desc">Design and development run in parallel, iterating on real feedback.</p>
+              </div>
+              <div class="col-item">
+                <p class="col-tag">04</p>
+                <h3 class="col-title">Launch</h3>
+                <p class="col-desc">We ship production-grade work — fast, accessible, and built to maintain.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- By the Numbers -->
+          <section class="topic" aria-labelledby="numbers-title">
+            <h2 id="numbers-title" class="section-title">By the numbers</h2>
+            <div class="stat-row">
+              <div>
+                <p class="stat-value">50+</p>
+                <p class="stat-label">Production deployments</p>
+              </div>
+              <div>
+                <p class="stat-value">&lt;48h</p>
+                <p class="stat-label">Average onboarding</p>
+              </div>
+              <div>
+                <p class="stat-value">9-figure</p>
+                <p class="stat-label">Annual transaction volume scaled</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Where we operate -->
+          <section class="topic" aria-labelledby="domains-title">
+            <h2 id="domains-title" class="section-title">Where we operate</h2>
+            <div class="col-grid">
+              <div class="col-item">
+                <p class="col-tag">FIN</p>
+                <h3 class="col-title">Finance</h3>
+                <p class="col-desc">Payment systems, banking platforms, fintech products, wallet and trading interfaces.</p>
+              </div>
+              <div class="col-item">
+                <p class="col-tag">CMP</p>
+                <h3 class="col-title">Compliance</h3>
+                <p class="col-desc">Regulatory tools, documentation systems, governance workflows.</p>
+              </div>
+              <div class="col-item">
+                <p class="col-tag">GME</p>
+                <h3 class="col-title">Games</h3>
+                <p class="col-desc">Game web platforms, marketing pages, Web3 integrations.</p>
+              </div>
+              <div class="col-item">
+                <p class="col-tag">SEC</p>
+                <h3 class="col-title">Security</h3>
+                <p class="col-desc">Security-focused interfaces, identity flows, secure product experiences.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Selected Experience -->
+          <section class="topic" aria-labelledby="exp-title">
+            <h2 id="exp-title" class="section-title">Selected experience</h2>
+            <p class="exp-intro">
+              We've helped build and scale platforms trusted by millions of users and billions
+              in transactions.
+            </p>
+            <div class="exp-row">
+              <h3 class="exp-name">CoinPayments</h3>
+              <p class="exp-desc">Platform modernization supporting nine-figure annual transaction volume.</p>
+            </div>
+            <div class="exp-row">
+              <h3 class="exp-name">IUGO Mobile Entertainment</h3>
+              <p class="exp-desc"><em>The Walking Dead: Road to Survival</em> — 100M+ downloads, $100M+ lifetime revenue.</p>
+            </div>
+            <div class="exp-row">
+              <h3 class="exp-name">PNI Digital Media (Staples)</h3>
+              <p class="exp-desc">AI/ML R&amp;D, QA, design systems.</p>
+            </div>
+            <div class="exp-row">
+              <h3 class="exp-name">Helm Operations</h3>
+              <p class="exp-desc">Product and growth execution.</p>
+            </div>
+          </section>
+
+          <!-- CTA -->
+          <section class="topic cta-block" aria-labelledby="cta-title">
+            <h2 id="cta-title" class="cta-title">
+              Building something that deserves senior execution?
+            </h2>
+            <p class="cta-text">
+              Tell us about your project. We reply within one business day.
+            </p>
+            <a href="/contact/" class="btn-primary">Get in touch →</a>
+            <a href="https://calendly.com/acewerk/intro" class="btn-primary" target="_blank" rel="noopener noreferrer" style="margin-left:14px">Book a call →</a>
           </section>
 
         </div>
@@ -909,6 +817,11 @@ function makeBand(cfg){
   const gl=canvas.getContext('webgl2',{alpha:true,premultipliedAlpha:false,antialias:true});
   if(!gl){ canvas.style.display='none'; return; }   // container gradient remains as graceful fallback
 
+
+  /* -- context-loss safety -- */
+  canvas.addEventListener('webglcontextlost',function(e){e.preventDefault();setRunning(false);},false);
+  canvas.addEventListener('webglcontextrestored',function(){if(!reduceMotion&&visible)setRunning(true);},false);
+
   function compile(t,s){const sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);
     if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS)){console.error(gl.getShaderInfoLog(sh));return null;}return sh;}
   const prog=gl.createProgram();
@@ -1081,6 +994,7 @@ function makeBand(cfg){
    photograph) and centred on the nucleus, so from wide 16:9 down to the
    tallest phone portrait the artwork always covers the screen; gravity lens on everywhere, phantom cursor when
    idle, a shooting star crosses every ~14s. */
+try{
 makeBand({
   id:'mosaic-galaxy',
   focalRow:57, focalCol:84,
@@ -1088,80 +1002,8 @@ makeBand({
   drive:true,
   shootEvery:14000
 });
-})();
-</script>
-<script>
-(function() {
-  'use strict';
-  const form = document.getElementById('contact-form');
-  if (!form) return;
 
-  const nameField = document.getElementById('name');
-  const emailField = document.getElementById('email');
-  const purposeField = document.getElementById('purpose');
-  if (!nameField || !emailField || !purposeField) return;
-
-  /* ── Show error under a field ── */
-  function showError(field, message) {
-    clearError(field);
-    field.classList.add('form-input--error');
-    var errorEl = document.createElement('p');
-    errorEl.className = 'form-error-message';
-    errorEl.id = 'error-' + field.id;
-    errorEl.setAttribute('role', 'alert');
-    errorEl.textContent = message;
-    field.parentNode.insertBefore(errorEl, field.nextSibling);
-    field.setAttribute('aria-describedby', errorEl.id);
-  }
-
-  /* ── Clear error for a single field ── */
-  function clearError(field) {
-    field.classList.remove('form-input--error');
-    var errorEl = document.getElementById('error-' + field.id);
-    if (errorEl) errorEl.remove();
-    field.removeAttribute('aria-describedby');
-  }
-
-  /* ── Validate on submit — prevent submission when any field is invalid ── */
-  form.addEventListener('submit', function(e) {
-    var hasError = false;
-
-    /* Name: required */
-    if (nameField.value.trim() === '') {
-      showError(nameField, 'Name is required.');
-      hasError = true;
-    }
-
-    /* Email: required + basic format */
-    var emailVal = emailField.value.trim();
-    if (emailVal === '') {
-      showError(emailField, 'Email is required.');
-      hasError = true;
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
-      showError(emailField, 'Invalid email format.');
-      hasError = true;
-    }
-
-    /* Purpose: required (default option value is empty) */
-    if (purposeField.value === '') {
-      showError(purposeField, 'Please select a purpose.');
-      hasError = true;
-    }
-
-    /* Company and Message: optional, no validation */
-
-    if (hasError) {
-      e.preventDefault();
-      // Focus the first field with an error
-      var firstErr = document.querySelector('.form-input--error');
-      if (firstErr) firstErr.focus();
-    }
-  });
-
-  /* ── Clear errors on input/change ── */
-  nameField.addEventListener('input', function() { clearError(nameField); });
-  emailField.addEventListener('input', function() { clearError(emailField); });
-  purposeField.addEventListener('change', function() { clearError(purposeField); });
+}catch(e){console.error('Mosaic init error:',e.message);}
 })();
 </script>
 </body>
