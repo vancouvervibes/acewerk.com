@@ -29,7 +29,12 @@
   "@id": "https://acewerk.com/#organization",
   "name": "Ace Werk",
   "url": "https://acewerk.com/",
-  "logo": "https://acewerk.com/assets/icons/logo.png",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://acewerk.com/assets/icons/acewerk-logo.png",
+    "width": 770,
+    "height": 1024
+  },
   "description": "Founder-led product studio: design, engineering, localization, and growth for startups and scaling teams.",
   "sameAs": [
     "https://www.linkedin.com/company/135276398/",
@@ -432,7 +437,13 @@
   const EMB=[]; for(let i=0;i<5;i++) EMB.push({r:2.4+Math.random()*5.2,a:Math.random()*6.283,sp:0.6+Math.random()*0.8,bob:0.5+Math.random()*0.9,ph:Math.random()*6.283,fl:1.6+Math.random()*1.8});
   function c01(x){return x<0?0:x>1?1:x;}
 
+  let rafId=null, paused=false;
+
   function frame(now){
+    if(paused){ rafId=null; return; }
+
+    rafId=requestAnimationFrame(frame);
+
     if(!reduceMotion){
       let dt=lastNow?(now-lastNow)*0.001:0.016; lastNow=now; if(dt>0.05)dt=0.05;
 
