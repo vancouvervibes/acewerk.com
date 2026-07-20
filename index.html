@@ -442,8 +442,6 @@
   function frame(now){
     if(paused){ rafId=null; return; }
 
-    rafId=requestAnimationFrame(frame);
-
     if(!reduceMotion){
       let dt=lastNow?(now-lastNow)*0.001:0.016; lastNow=now; if(dt>0.05)dt=0.05;
 
